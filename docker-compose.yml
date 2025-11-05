@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  litellm-vector-store-mcp:
+    build: .
+    image: litellm-vector-store-mcp:latest
+    container_name: litellm-vector-store-mcp
+
+    # Environment variables loaded from .env file
+    env_file:
+      - .env
+
+    # Stdin must be open for MCP stdio transport
+    stdin_open: true
+
+    # Keep container running (MCP servers are long-lived)
+    tty: true
+
+    # Restart policy
+    restart: unless-stopped
+
+    # Resource limits (adjust based on your needs)
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+    # Health check (optional - checks if Python process is running)
+    healthcheck:
+      test: ["CMD", "pgrep", "-f", "python.*server.py"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

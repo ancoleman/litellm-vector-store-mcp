@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "litellm-vector-store": {
+      "type": "stdio",
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "LITELLM_API_KEY=${LITELLM_API_KEY}",
+        "-e",
+        "LITELLM_VECTOR_STORE_ID=${LITELLM_VECTOR_STORE_ID:-2341871806232657920}",
+        "-e",
+        "LITELLM_BASE_URL=${LITELLM_BASE_URL:-https://litellm.psolabs.com}",
+        "-e",
+        "VERTEX_AI_PROJECT=${VERTEX_AI_PROJECT:-ngfw-coe}",
+        "-e",
+        "VERTEX_AI_LOCATION=${VERTEX_AI_LOCATION:-us-east4}",
+        "us-central1-docker.pkg.dev/ngfw-coe/litellm-vector-store-mcp/litellm-vector-store-mcp:latest"
+      ]
+    }
+  }
+}

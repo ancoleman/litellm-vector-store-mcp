@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "litellm-vector-store-mcp"
+version = "0.1.0"
+description = "MCP server for searching LiteLLM vector stores"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.0.0",
+    "python-dotenv>=1.0.0",
+    "requests>=2.31.0",
+]
+
+[project.scripts]
+litellm-vector-store-mcp = "server:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/litellm-vector-store-mcp"
