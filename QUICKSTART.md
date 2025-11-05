@@ -635,15 +635,35 @@ gcloud compute start-iap-tunnel litellm-proxy 443 \
   --project=ngfw-coe
 ```
 
-**Step 2:** Update .env to use proxy
+**Step 2:** Update .env to use `host.docker.internal`
 
 ```env
-# Use local proxy instead of direct connection
-LITELLM_BASE_URL=http://localhost:5600
+# Use host.docker.internal to access host's localhost from Docker
+# Replace 5006 with your actual proxy port
+LITELLM_BASE_URL=http://host.docker.internal:5006
 ```
 
-**Step 3:** Add MCP server (same as Method 1)
+⚠️ **Critical:** Use `host.docker.internal`, NOT `localhost`!
+- `localhost` inside Docker → container itself (won't work) ❌
+- `host.docker.internal` → your host machine (works!) ✅
 
+**Step 3:** Add MCP server (standard command)
+
+```bash
+claude mcp add-json --scope user litellm-vector-store '{
+  "type": "stdio",
+  "command": "docker",
+  "args": [
+    "run", "-i", "--rm",
+    "--env-file", "/path/to/.env",
+    "us-central1-docker.pkg.dev/ngfw-coe/litellm-vector-store-mcp/litellm-vector-store-mcp:latest"
+  ]
+}'
+```
+
+**Alternative for Linux (if host.docker.internal doesn't work):**
+
+Add `--network host` flag:
 ```bash
 claude mcp add-json --scope user litellm-vector-store '{
   "type": "stdio",
@@ -657,7 +677,11 @@ claude mcp add-json --scope user litellm-vector-store '{
 }'
 ```
 
-⚠️ **Note:** Added `--network host` so Docker container can access localhost proxy.
+With `--network host`, you can use `LITELLM_BASE_URL=http://localhost:5006` in `.env`.
+
+⚠️ **Platform notes:**
+- **macOS/Windows:** Use `host.docker.internal` (recommended)
+- **Linux:** Use `--network host` (host.docker.internal may not work)
 
 **Use cases:**
 - Secure access via IAP tunnel
