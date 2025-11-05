@@ -22,8 +22,8 @@ us-central1-docker.pkg.dev/ngfw-coe/litellm-vector-store-mcp/litellm-vector-stor
 ### Docker Images Pushed
 
 **Tags available:**
-- `latest` - Most recent version (rolling tag)
-- `v0.1.0` - Stable version 0.1.0
+- `latest` - Most recent version (rolling tag, multi-platform)
+- `v0.1.0` - Stable version 0.1.0 (multi-platform)
 
 **Full Image Names:**
 ```
@@ -32,10 +32,18 @@ us-central1-docker.pkg.dev/ngfw-coe/litellm-vector-store-mcp/litellm-vector-stor
 ```
 
 **Image Details:**
-- **Size:** ~200MB
+- **Platforms:** linux/amd64, linux/arm64 (multi-platform manifest)
+- **Size:** ~200MB per platform
 - **Base:** Python 3.12-slim
 - **User:** Non-root (mcp:1000)
-- **Digest:** `sha256:0d094a84c29b31c2ca19e6832235830f5415729e2c5263324da37bd97d5d9888`
+- **Manifest Digest:** `sha256:1f27e8daf0cba47cf3e2a7df40f17d95c5186379cf43351271aad04468ef7496`
+
+**Platform Compatibility:**
+- ✅ Windows (WSL2) - Pulls linux/amd64
+- ✅ macOS Intel - Pulls linux/amd64
+- ✅ macOS Apple Silicon (M1/M2/M3) - Pulls linux/arm64
+- ✅ Linux x86_64 - Pulls linux/amd64
+- ✅ Linux ARM64 - Pulls linux/arm64
 
 ---
 

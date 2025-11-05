@@ -23,6 +23,7 @@ This directory contains technical documentation, architecture decisions, and imp
 - [Improvements Summary](../IMPROVEMENTS_SUMMARY.md) - All MCP best practices applied
 - [Multi-Vector Store Support](MULTI_VECTOR_STORE_SUPPORT.md) - Architecture analysis and design
 - [Multi-Store Usage](MULTI_STORE_USAGE.md) - Usage guide with Claude examples
+- [Multi-Platform Support](MULTI_PLATFORM_SUPPORT.md) - Platform compatibility (amd64/arm64)
 - [Implementation Complete](IMPLEMENTATION_COMPLETE.md) - Multi-store feature delivery summary
 
 ---

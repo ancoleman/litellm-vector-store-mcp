@@ -27,12 +27,16 @@ A production-ready [Model Context Protocol (MCP)](https://modelcontextprotocol.i
 
 ### 🐳 Docker Image
 
-**Pre-built image available in GCP Artifact Registry:**
+**Pre-built multi-platform image available in GCP Artifact Registry:**
 ```
 us-central1-docker.pkg.dev/ngfw-coe/litellm-vector-store-mcp/litellm-vector-store-mcp:latest
 ```
 
-**No build required!** Just pull and configure.
+**Supported Platforms:**
+- ✅ `linux/amd64` - Intel/AMD processors (Windows WSL, Linux, Intel Macs)
+- ✅ `linux/arm64` - ARM processors (Apple Silicon Macs, ARM servers)
+
+**No build required!** Docker automatically pulls the correct architecture for your system.
 
 ### One-Command Setup (Secure Method)
 

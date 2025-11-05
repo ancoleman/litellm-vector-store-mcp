@@ -209,12 +209,22 @@ No configuration changes needed!
 - ❌ Python environment
 - ❌ To build Docker image locally
 - ❌ requirements.txt or dependencies
+- ❌ To worry about your CPU architecture (multi-platform support!)
 
 **You only need:**
-- ✅ Docker installed
+- ✅ Docker installed (Windows WSL2, macOS, or Linux)
 - ✅ GCP access to ngfw-coe project
 - ✅ Your LiteLLM API credentials
 - ✅ Claude Code installed
+
+**Platform Support:**
+- ✅ Windows (WSL2) - linux/amd64
+- ✅ macOS Intel - linux/amd64
+- ✅ macOS Apple Silicon (M1/M2/M3) - linux/arm64
+- ✅ Linux x86_64 - linux/amd64
+- ✅ Linux ARM64 - linux/arm64
+
+Docker automatically downloads the correct image for your system!
 
 ---
 

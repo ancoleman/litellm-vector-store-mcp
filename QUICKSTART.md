@@ -4,12 +4,16 @@ Get the LiteLLM Vector Store MCP Server running with Claude Code in 5 minutes.
 
 ## 🎯 Docker Image Location
 
-**Pre-built image available in GCP Artifact Registry:**
+**Pre-built multi-platform image available in GCP Artifact Registry:**
 ```
 us-central1-docker.pkg.dev/ngfw-coe/litellm-vector-store-mcp/litellm-vector-store-mcp:latest
 ```
 
-**No need to build locally!** Just pull and run (see below).
+**Supported Platforms:**
+- ✅ `linux/amd64` - Windows (WSL2), Linux, Intel Macs
+- ✅ `linux/arm64` - Apple Silicon Macs (M1/M2/M3), ARM servers
+
+**No need to build locally!** Docker automatically selects the right architecture for your system.
 
 ## 📋 Prerequisites
 
